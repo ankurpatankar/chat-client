@@ -42,7 +42,7 @@ Add store.js
 ### Install redux-thunk
 `npm install --save redux-thunk`
 
-#
+
 ### Why use redux thunk and what are Async actions
 https://redux.js.org/docs/advanced/AsyncActions.html
 
