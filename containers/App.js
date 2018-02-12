@@ -10,8 +10,6 @@ import {
 class App extends React.Component {
     constructor(props) {
         super();
-        console.log('prp');
-        console.log('a', props);
         this.state = {
             userName: '',
             name: '',
@@ -39,7 +37,6 @@ class App extends React.Component {
     }
 
     render () {
-        console.log(`App ${JSON.stringify(this.props)}`);
         const {
             userName,
             name,
