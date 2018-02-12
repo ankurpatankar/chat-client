@@ -1,4 +1,4 @@
-import { SET_MESSAGE } from '../types/message';
+import { SEND_MESSAGE } from '../types/message';
 
 const initState = {
     message: '',
@@ -6,7 +6,7 @@ const initState = {
 
 export default (state = initState, action) => {
     switch(action.type) {
-        case SET_MESSAGE:
+        case SEND_MESSAGE:
             return {
                 ...state,
                 message: action.payload.message
