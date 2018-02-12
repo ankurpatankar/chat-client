@@ -1,9 +1,11 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import messageReducer from './reducers/message';
+import userInfoReducer from './reducers/userInfo';
 import thunk from 'redux-thunk';
 
 const reducer = combineReducers({
     messageReducer,
+    userInfoReducer,
 });
 const store = createStore(
     reducer,
