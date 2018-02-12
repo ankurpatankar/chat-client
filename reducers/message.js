@@ -1,7 +1,7 @@
 import { SET_MESSAGE } from '../types/message';
 
 const initState = {
-    message: ''
+    message: '',
 };
 
 export default (state = initState, action) => {

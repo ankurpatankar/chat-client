@@ -1,23 +1,64 @@
 import React from 'react';
-import InputPreview from '../components/InputPreview';
 import { connect } from 'react-redux';
 import { setMessage } from '../actions/message';
+import { setUserInfo } from '../actions/userInfo';
 import { Link } from 'react-router-dom';
+import {
+    SingleLine,
+} from '../components/inputFields.js';
 
 class App extends React.Component {
-    _onChange = (value) => {
-        this.props.dispatch(setMessage(value))
+    constructor(props) {
+        super();
+        console.log('prp');
+        console.log('a', props);
+        this.state = {
+            userName: '',
+            name: '',
+        }
+
+        this.handleChange = this.handleChange.bind(this);
+        this.saveCurrentUser = this.saveCurrentUser.bind(this);
+    }
+
+    handleChange = (event) => {
+        const {
+            name,
+            value,
+        } = event.target;
+        this.setState({
+            [name]: value,
+        });
+    }
+
+    saveCurrentUser(userName, name) {
+        const userInfo = {
+            ...this.state,
+        };
+        this.props.dispatch(setUserInfo(userInfo));
     }
 
     render () {
-        const { message } = this.props.messageReducer;
+        console.log(`App ${JSON.stringify(this.props)}`);
+        const {
+            userName,
+            name,
+        } = this.state;
         return (
             <div>
-                <InputPreview
-                    value={message}
-                    onChange={this._onChange} />
-                <Link to="/about">
-                    <button>Go to About</button>
+                <h2>{`Welcome to LightChat !!!`}</h2>
+                <SingleLine
+                    label={'Username'}
+                    name={'userName'}
+                    value={userName}
+                    onChange={this.handleChange} />
+                <SingleLine
+                    label={'Name'}
+                    name={'name'}
+                    value={name}
+                    onChange={this.handleChange} />
+                <Link to="/chat">
+                    <button onClick={this.saveCurrentUser}>Start Chat</button>
                 </Link>
             </div>
         );
