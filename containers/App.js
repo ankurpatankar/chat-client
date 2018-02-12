@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setMessage } from '../actions/message';
 import { setUserInfo } from '../actions/userInfo';
 import { Link } from 'react-router-dom';
 import {

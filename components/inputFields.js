@@ -31,6 +31,7 @@ class MultiLine extends React.Component {
             label,
             name,
             onChange,
+            onKeyUp,
             value,
         } = this.props;
         return (
@@ -45,6 +46,7 @@ class MultiLine extends React.Component {
                         value={value}
                         name={name}
                         onChange={e => onChange(e)}
+                        onKeyUp={e => onKeyUp(e)}
                         rows="4"
                         columns="20" />
             </div>
