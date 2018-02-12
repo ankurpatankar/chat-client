@@ -6,13 +6,13 @@ export default class ChatMessage extends React.Component {
             from,
             timestamp,
             message,
-        } this.props;
+        } = this.props;
         const messageAlignment = from ? 'left' : 'right'
         return (
             <div className={`chat-message ${messageAlignment}`}>
                 {from ? <div className="sender">{from}</div> : null}
                 <div className="message">{message}</div>
-                <div className="time">{timestamp.toLocaleString()}</div>
+                <div className="time">{(new Date(timestamp)).toLocaleString()}</div>
             </div>
         );
     }

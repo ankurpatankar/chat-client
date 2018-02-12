@@ -5,12 +5,13 @@ import {
     MultiLine,
 } from '../components/inputFields.js';
 import { sendMessage } from '../actions/message';
+import ChatMessage from '../components/chatMessage'
 
 class Chat extends React.Component {
     constructor(props) {
         super();
         this.state = {
-            currentMessage: '',
+            content: '',
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -38,23 +39,30 @@ class Chat extends React.Component {
             author: this.props.userInfoReducer.userInfo.name,
         }));
         this.setState({
-            currentMessage: '',
+            content: '',
         });
     }
 
     render () {
         const {
-            currentMessage,
+            content,
         } = this.state;
+        const {
+            author: from,
+            timestamp,
+            content: message,
+        } = this.props.messageReducer.message;
         return (
             <div className="chat-client">
                 <Link to="/">
                     <button>Exit Chat</button>
                 </Link>
-                <div className="message-history"></div>
+                <div className="message-history">
+                    {message ? <ChatMessage from={from} timestamp={timestamp} message={message} /> : null}
+                </div>
                 <MultiLine
-                    value={currentMessage}
-                    name={'currentMessage'}
+                    value={content}
+                    name={'content'}
                     onChange={this.handleChange}
                     onKeyUp={this.handleKeyUp} />
             </div>
